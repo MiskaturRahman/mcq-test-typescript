@@ -34,12 +34,12 @@ const Home = () => {
   };
 
   return (
-    <Container data-testid="container">
-      <Typography variant="h4" sx={{ margin: "20px 0" }}>
+    <Container data-testid="home">
+      <Typography data-testid="h4" variant="h4" sx={{ margin: "20px 0" }}>
         Please Enter your name
       </Typography>
 
-      <div>
+      <div data-testid="inputField">
         <TextField
           name="name"
           value={UserData.name}
