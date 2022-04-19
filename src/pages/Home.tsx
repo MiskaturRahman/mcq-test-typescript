@@ -39,7 +39,7 @@ const Home = () => {
         Please Enter your name
       </Typography>
 
-      <div data-testid="inputField">
+      <div>
         <TextField
           name="name"
           value={UserData.name}
@@ -70,6 +70,7 @@ const Home = () => {
       </div>
 
       <Button
+        data-testid="button"
         variant="outlined"
         disabled={UserData.name.length < 1}
         onClick={handleSubmit}

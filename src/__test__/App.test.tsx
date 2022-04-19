@@ -66,3 +66,17 @@ test("Home render test", () => {
 //   const exam = screen.getByTestId("exam");
 //   expect(exam).toBeInTheDocument();
 // });
+
+test("render h1 element", () => {
+  render(<Home />);
+
+  screen.debug();
+
+  expect(screen.getByText("Please Enter your name")).toBeInTheDocument();
+});
+
+// test("check input is required", () => {
+//   render(<Home />);
+//   const name = screen.getByTestId("inputField");
+//   expect(name).toHaveValue();
+// });
