@@ -3,8 +3,9 @@ import { render, screen } from "@testing-library/react";
 import App from "../App";
 import Question from "../pages/Question";
 import { QuestionInfo } from "../json/QuestionData";
-import Exam from "../pages/Exam";
 import Home from "../pages/Home";
+import Exam from "../pages/Exam";
+import { BrowserRouter } from "react-router-dom";
 
 //App test
 test("App test", () => {
@@ -51,18 +52,22 @@ test("Home render test", () => {
   expect(home).toBeInTheDocument();
 });
 
-// //Exam test
-// const originalModule = jest.requireActual("react-router-dom");
+//Exam test
+const originalModule = jest.requireActual("react-router-dom");
 
-// module.exports = {
-//   __esModule: true,
-//   ...originalModule,
-//   useLocation: jest.fn().mockReturnValue({ pathname: "/exam" }),
-//   useNavigate: jest.fn(),
-// };
+module.exports = {
+  __esModule: true,
+  ...originalModule,
+  useLocation: jest.fn().mockReturnValue({ pathname: "/exam" }),
+  useNavigate: jest.fn(),
+};
 
 // test("Exam render test", () => {
-//   render(<Exam />);
+//   render(
+//     <BrowserRouter>
+//       <Exam />
+//     </BrowserRouter>
+//   );
 //   const exam = screen.getByTestId("exam");
 //   expect(exam).toBeInTheDocument();
 // });
@@ -70,6 +75,7 @@ test("Home render test", () => {
 test("render h1 element", () => {
   render(<Home />);
 
+  // eslint-disable-next-line testing-library/no-debugging-utils
   screen.debug();
 
   expect(screen.getByText("Please Enter your name")).toBeInTheDocument();
@@ -80,3 +86,13 @@ test("render h1 element", () => {
 //   const name = screen.getByTestId("inputField");
 //   expect(name).toHaveValue();
 // });
+
+test("render submit Button", () => {
+  render(
+    <BrowserRouter>
+      <Exam />
+    </BrowserRouter>
+  );
+  const ButtonElement = screen.getByRole("button");
+  expect(ButtonElement).toBeInTheDocument();
+});

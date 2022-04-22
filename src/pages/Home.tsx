@@ -35,7 +35,11 @@ const Home = () => {
 
   return (
     <Container data-testid="home">
-      <Typography data-testid="h4" variant="h4" sx={{ margin: "20px 0" }}>
+      <Typography
+        data-testid="inputField"
+        variant="h4"
+        sx={{ margin: "20px 0" }}
+      >
         Please Enter your name
       </Typography>
 
@@ -70,7 +74,6 @@ const Home = () => {
       </div>
 
       <Button
-        data-testid="button"
         variant="outlined"
         disabled={UserData.name.length < 1}
         onClick={handleSubmit}
